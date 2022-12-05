@@ -69,7 +69,8 @@ set ::env(FP_PDN_CHECK_NODES) 0
 
 # The following is because there are no std cells in the example wrapper project.
 set ::env(SYNTH_ELABORATE_ONLY) 1
-set ::env(PL_RANDOM_GLB_PLACEMENT) 1
+#set ::env(PL_RANDOM_GLB_PLACEMENT) 1
+set ::env(PL_ROUTABILITY_DRIVEN) 1
 
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
