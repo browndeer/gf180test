@@ -35,6 +35,7 @@ documentation:
     - serdes input bit 3
     - serdes input bit 4
     - serdes input bit 5
+    - run
   outputs:
     - serdes output bit 0
     - serdes output bit 1

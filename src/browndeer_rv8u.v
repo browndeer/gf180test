@@ -44,7 +44,8 @@ module browndeer_rv8u(
 
 //	input in_clk,
 //	input [7:1] io_in,
-	input [7:0] io_in, // ZZZ
+//	input [7:0] io_in, // ZZZ
+	input [8:0] io_in, // ZZZ
 	output [7:0] io_out
 
 //	output [BITS-3:0] debug_pc,
@@ -211,7 +212,8 @@ module browndeer_rv8u(
 	wire run;
 	wire run_not_stall;
 
-	assign run = (~ rst);
+//	assign run = (~ rst);
+	assign run = io_in[8];
 	assign run_not_stall = run & (~ stall);
 
 
