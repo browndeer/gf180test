@@ -3,10 +3,10 @@
 project:
   wokwi_id:    0        # If using wokwi, set this to your project's ID
   source_files:        # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. Source files must be in ./src
-    - verilog/rtl/browndeer_rv8u.v
+    - verilog/rtl/pyramiden_core.v
     - verilog/rtl/des.v
     - verilog/rtl/registers.v
-  top_module:  "browndeer_rv8u"      # put the name of your top module here, make it unique by prepending your github username
+  top_module:  "pyramiden_core"      # put the name of your top module here, make it unique by prepending your github username
 
 # As everyone will have access to all designs, try to make it easy for someone new to your design to know what
 # it does and how to operate it.
@@ -17,8 +17,8 @@ project:
 documentation: 
   author:       "David Richie"      # Your name
   discord:      ""      # Your discord handle
-  title:        "RV8U - 8-bit RISC-V Microcore Processor"      # Project title
-  description:  "8-bit processor based on RISC-V ISA"      # Short description of what your project does
+  title:        "RV16U - 16-bit RISC-V Microcore Processor"      # Project title
+  description:  "16-bit processor based on RISC-V ISA"      # Short description of what your project does
   how_it_works: "Executes reduced RISC-V based ISA"      # Longer description of how the project works
   how_to_test:  "Requires interfacing to external memory"      # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   external_hw:  ""      # Describe any external hardware needed
@@ -29,14 +29,27 @@ documentation:
   inputs:               # a description of what the inputs do
     - clock
     - reset
+    - reserved
+    - reserved
     - serdes input bit 0
     - serdes input bit 1
     - serdes input bit 2
     - serdes input bit 3
     - serdes input bit 4
     - serdes input bit 5
-    - run
+    - serdes input bit 6
+    - serdes input bit 7
+    - serdes input bit 8
+    - serdes input bit 9
+    - serdes input bit 10
+    - serdes input bit 11
+    - serdes input bit 12
+    - serdes input bit 13
+    - serdes input bit 14
+    - serdes input bit 15
   outputs:
+    - halt
+    - reserved
     - serdes output bit 0
     - serdes output bit 1
     - serdes output bit 2
@@ -45,4 +58,12 @@ documentation:
     - serdes output bit 5
     - serdes output bit 6
     - serdes output bit 7
+    - serdes output bit 8
+    - serdes output bit 9
+    - serdes output bit 10
+    - serdes output bit 11
+    - serdes output bit 12
+    - serdes output bit 13
+    - serdes output bit 14
+    - serdes output bit 15
 
