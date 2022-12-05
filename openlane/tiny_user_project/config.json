@@ -11,12 +11,15 @@
     "CLOCK_PERIOD": 24,
     "CLOCK_PORT": "",
     "CLOCK_NET": "",
+    "foo": "bar",
     "FP_SIZING": "absolute",
     "DIE_AREA": "0 0 600 680",
     "PL_BASIC_PLACEMENT": 0,
     "PL_RANDOM_GLB_PLACEMENT": 0,
+    "PL_B_PLACEMENT": 0,
     "PL_ROUTABILITY_DRIVEN": 1,
     "PL_TARGET_DENSITY": 0.7,
+    "GLB_RT_ADJUSTMENT": 0.25,
     "SYNTH_USE_PG_PINS_DEFINES": "USE_POWER_PINS",
     "VDD_NETS": [
         "vdd"
