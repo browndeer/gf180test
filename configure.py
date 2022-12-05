@@ -13,7 +13,7 @@ import jinja2
 
 #GPIO_VALID_RANGE = [8, 36]
 #GPIO_VALID_RANGE = [0, 38]
-GPIO_VALID_RANGE = [0, 19]
+GPIO_VALID_RANGE = [0, 38]
 
 def load_yaml(yaml_file):
     with open(yaml_file, "r") as stream:
@@ -127,8 +127,8 @@ def get_top_module(yaml):
 
 def get_io_ranges(yaml):
     input_range = (GPIO_VALID_RANGE[0], GPIO_VALID_RANGE[0]+len(yaml['documentation']['inputs']))
-#    output_range = (input_range[1], input_range[1]+len(yaml['documentation']['outputs']))
-    output_range = (GPIO_VALID_RANGE[0], GPIO_VALID_RANGE[0]+len(yaml['documentation']['outputs']))
+    output_range = (input_range[1], input_range[1]+len(yaml['documentation']['outputs']))
+#    output_range = (GPIO_VALID_RANGE[0], GPIO_VALID_RANGE[0]+len(yaml['documentation']['outputs']))
     gpio_end = output_range[1]
     if gpio_end > GPIO_VALID_RANGE[1]:
         raise Exception('ETOOMANY IOs')

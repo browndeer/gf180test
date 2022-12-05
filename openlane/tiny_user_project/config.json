@@ -11,7 +11,6 @@
     "CLOCK_PERIOD": 24,
     "CLOCK_PORT": "",
     "CLOCK_NET": "",
-    "foo": "bar",
     "FP_SIZING": "absolute",
     "DIE_AREA": "0 0 600 680",
     "PL_BASIC_PLACEMENT": 0,
