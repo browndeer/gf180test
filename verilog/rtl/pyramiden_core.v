@@ -19,9 +19,9 @@
 
 module pyramiden_core(
 
-	input in_clk,
+//	input in_clk,
 
-	input [19:1] io_in,
+	input [19:0] io_in,
 	output [17:0] io_out
 
 //	output [BITS-3:0] debug_pc,
@@ -32,7 +32,7 @@ module pyramiden_core(
 
 );
 
-//	wire in_clk; // ZZZ
+	wire in_clk; // ZZZ
 
 
 	///////////////////////////////////////////////////////////////////////////
@@ -251,7 +251,7 @@ module pyramiden_core(
 	//////////   IO   /////////////////////////////////////////////////////////
    ///////////////////////////////////////////////////////////////////////////
 
-//	assign in_clk 				= io_in[0]; // ZZZ
+	assign in_clk 				= io_in[0]; // ZZZ
 	assign rst 				= io_in[1];
 	assign run 				= (~ rst); //io_in[2];
 //	assign ??? 				= io_in[3];
