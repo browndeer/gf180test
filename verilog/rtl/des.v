@@ -21,11 +21,11 @@ module des(
 	input in_clk,
 	input rst,
 
-   input [15:0] des_sin,
+   input [12:0] des_sin,
    output reg [15:0] des_sout,
 
    input [63:0] des_din,
-   output reg [63:0] des_dout,
+   output reg [51:0] des_dout,
 
 	output reg des_clk_out
 );
@@ -55,10 +55,10 @@ module des(
    always @ (posedge in_clk)
    begin
       case (des_counter)
-         3'b000: des_dout[15:0] <= des_sin;
-         3'b001: des_dout[31:16] <= des_sin;
-         3'b010: des_dout[47:32] <= des_sin;
-         3'b011: des_dout[63:48] <= des_sin;
+         3'b000: des_dout[12:0] <= des_sin;
+         3'b001: des_dout[25:13] <= des_sin;
+         3'b010: des_dout[38:26] <= des_sin;
+         3'b011: des_dout[51:39] <= des_sin;
          3'b100: begin end
          3'b101: begin end
          3'b110: begin end

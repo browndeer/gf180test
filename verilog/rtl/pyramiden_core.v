@@ -21,8 +21,8 @@ module pyramiden_core(
 
 //	input in_clk,
 
-	input [19:0] io_in,
-	output [17:0] io_out
+	input [18:0] io_in,
+	output [18:0] io_out
 
 //	output [BITS-3:0] debug_pc,
 //	output [IBITS-1:0] debug_instr,
@@ -42,9 +42,9 @@ module pyramiden_core(
 	////////////////////////////////
 
 	parameter BITS = 16;
-	parameter IBITS = 18;
-	parameter RBITS = 3;
-	parameter NREG = 8;
+	parameter IBITS = 21;
+	parameter RBITS = 4;
+	parameter NREG = 16;
 
 
 	///////////////////////////////////////////////////////////////////////////
@@ -220,10 +220,10 @@ module pyramiden_core(
    /////////////////////////
 
    wire des_clk_out;
-   wire [15:0] des_sin;
+   wire [12:0] des_sin;
    wire [15:0] des_sout;
    wire [63:0] des_din;
-   wire [63:0] des_dout;
+   wire [51:0] des_dout;
 
    //////////////////////////
    ////////// core //////////
@@ -253,13 +253,16 @@ module pyramiden_core(
 
 	assign in_clk 				= io_in[0]; // ZZZ
 	assign rst 				= io_in[1];
-	assign run 				= (~ rst); //io_in[2];
-//	assign ??? 				= io_in[3];
-	assign des_sin			= io_in[19:4];
+	assign run 				= io_in[2];
+	assign imem_rdy 		= io_in[3];
+	assign dmem_bsy 		= io_in[4];
+	assign dmem_rdy 		= io_in[5];
+	assign des_sin			= io_in[18:6];
 
 	assign io_out[0]		= halt;
-//	assign io_out[1]		= ???
-	assign io_out[17:2]	= des_sout;
+	assign io_out[1] 		= dmem_we;
+	assign io_out[2] 		= dmem_en;
+	assign io_out[18:3]	= des_sout;
 
 
    ///////////////////////////////////////////////////////////////////////////
@@ -278,19 +281,12 @@ module pyramiden_core(
 
 	assign clk = des_clk_out;
 
-   assign imem_dout	= des_dout[17:0];
-   assign dmem_dout	= des_dout[33:18];
-	assign imem_rdy	= 1; //des_dout[34];
-	assign dmem_bsy	= 0; //des_dout[35];
-	assign dmem_rdy	= 1; //des_dout[36];
+   assign imem_dout	= des_dout[20:0];
+   assign dmem_dout	= des_dout[36:21];
 
-   assign des_din[6:0]		= imem_addr[6:0];
-   assign des_din[13:7]		= dmem_addr[6:0];
-   assign des_din[29:14]	= dmem_din;
-   assign des_din[30]		= dmem_we;
-   assign des_din[31]		= dmem_en;
-   assign des_din[38:32]	= imem_addr[13:7];
-   assign des_din[47:39]	= dmem_addr[15:7];
+   assign des_din[13:0]		= imem_addr;
+   assign des_din[31:16]	= dmem_addr;
+   assign des_din[47:32]	= dmem_din;
 
 
 	///////////////////////////////////////////////////////////////////////////
@@ -393,7 +389,7 @@ module pyramiden_core(
 		if (imem_rdy)
 			nxt_instr = imem_dout[IBITS-1:0];
 		else
-			nxt_instr = 18'h3ffff;
+			nxt_instr = 21'h1fffff;
 	end
 
 	always @ (posedge clk)
@@ -443,7 +439,7 @@ module pyramiden_core(
 			if (valid_out1)
 				instr_2 <= instr;
 			else
-				instr_2 <= 18'h3ffff;
+				instr_2 <= 21'h1fffff;
 		end
 		else begin
 			pc_2 <= pc_2;
@@ -474,11 +470,11 @@ module pyramiden_core(
 
 
 	assign opcode = instr_2[2:0];
-	assign rd = instr_2[5:3];
-	assign funct3 = instr_2[8:6];
-	assign rs1 = instr_2[11:9];
-	assign rs2 = instr_2[14:12];
-	assign funct7 = instr_2[17:15];
+	assign rd = instr_2[6:3];
+	assign funct3 = instr_2[9:7];
+	assign rs1 = instr_2[13:10];
+	assign rs2 = instr_2[17:14];
+	assign funct7 = instr_2[20:18];
 
 	assign rv_op_imm 		= (opcode == 3'b001);
 	assign rv_op	 		= (opcode == 3'b011);
@@ -518,30 +514,23 @@ module pyramiden_core(
 
 	assign ri = rv_itype | rv_stype;
 
-	assign s[15] = instr_2[17];
-	assign s[14] = instr_2[17];
-	assign s[13] = instr_2[17];
-	assign s[12] = instr_2[17];
-	assign s[11] = instr_2[17];
-	assign s[10] = instr_2[17];
-	assign s[9] = instr_2[17];
-	assign s[8] = instr_2[17];
-	assign s[7] = instr_2[17];
-	assign s[6] = instr_2[17];
-
-	assign opcode = instr_2[2:0];
-	assign rd = instr_2[5:3];
-	assign funct3 = instr_2[8:6];
-	assign rs1 = instr_2[11:9];
-	assign rs2 = instr_2[14:12];
-	assign funct7 = instr_2[17:15];
+	assign s[15] = instr_2[20];
+	assign s[14] = instr_2[20];
+	assign s[13] = instr_2[20];
+	assign s[12] = instr_2[20];
+	assign s[11] = instr_2[20];
+	assign s[10] = instr_2[20];
+	assign s[9] = instr_2[20];
+	assign s[8] = instr_2[20];
+	assign s[7] = instr_2[20];
+	assign s[6] = instr_2[20];
 
    always @ (*)
    begin
       if (rv_itype)
-         imm6 = { instr_2[17:12] };
+         imm6 = { instr_2[19:14] };
       else
-         imm6 = { instr_2[17:15], instr_2[5:3] };
+         imm6 = { instr_2[20:18], instr_2[5:3] };
    end
 
 	always @ (*)
@@ -549,7 +538,7 @@ module pyramiden_core(
 		if (rv_itype|rv_stype|rv_btype)
 			imm = { s[15:6], imm6 };
 		else
-			imm = { s[15:12], instr_2[17:6] };
+			imm = { s[15:12], instr_2[18:7] };
 	end
 
 

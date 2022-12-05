@@ -33,8 +33,8 @@ module registers(
 );
 
 	parameter BITS = 16;
-	parameter RBITS = 3;
-	parameter NREG = 8;
+	parameter RBITS = 4;
+	parameter NREG = 16;
 
 	reg [BITS-1:0] r1;
 	reg [BITS-1:0] r2;
@@ -43,43 +43,91 @@ module registers(
 	reg [BITS-1:0] r5;
 	reg [BITS-1:0] r6;
 	reg [BITS-1:0] r7;
+	reg [BITS-1:0] r8;
+	reg [BITS-1:0] r9;
+	reg [BITS-1:0] r10;
+	reg [BITS-1:0] r11;
+	reg [BITS-1:0] r12;
+	reg [BITS-1:0] r13;
+	reg [BITS-1:0] r14;
+	reg [BITS-1:0] r15;
 
 	always @ (posedge clk)
 	begin
-		if (run & we & (rd==3'b001)) 
+		if (run & we & (rd==4'b0001)) 
     	  r1 <= rd_din;
 		else 
 			r1 <= r1;
 
-		if (run & we & (rd==3'b010)) 
+		if (run & we & (rd==4'b0010)) 
     	  r2 <= rd_din;
 		else 
 			r2 <= r2;
 
-		if (run & we & (rd==3'b011)) 
+		if (run & we & (rd==4'b0011)) 
     	  r3 <= rd_din;
 		else 
 			r3 <= r3;
 
-		if (run & we & (rd==3'b100)) 
+		if (run & we & (rd==4'b0100)) 
     	  r4 <= rd_din;
 		else 
 			r4 <= r4;
 
-		if (run & we & (rd==3'b101)) 
+		if (run & we & (rd==4'b0101)) 
     	  r5 <= rd_din;
 		else 
 			r5 <= r5;
 
-		if (run & we & (rd==3'b110)) 
+		if (run & we & (rd==4'b0110)) 
     	  r6 <= rd_din;
 		else 
 			r6 <= r6;
 
-		if (run & we & (rd==3'b111)) 
+		if (run & we & (rd==4'b0111)) 
     	  r7 <= rd_din;
 		else 
 			r7 <= r7;
+
+		if (run & we & (rd==4'b1000)) 
+    	  r8 <= rd_din;
+		else 
+			r8 <= r8;
+
+		if (run & we & (rd==4'b1001)) 
+    	  r9 <= rd_din;
+		else 
+			r9 <= r9;
+
+		if (run & we & (rd==4'b1010)) 
+    	  r10 <= rd_din;
+		else 
+			r10 <= r10;
+
+		if (run & we & (rd==4'b1011)) 
+    	  r11 <= rd_din;
+		else 
+			r11 <= r11;
+
+		if (run & we & (rd==4'b1100)) 
+    	  r12 <= rd_din;
+		else 
+			r12 <= r12;
+
+		if (run & we & (rd==4'b1101)) 
+    	  r13 <= rd_din;
+		else 
+			r13 <= r13;
+
+		if (run & we & (rd==4'b1110)) 
+    	  r14 <= rd_din;
+		else 
+			r14 <= r14;
+
+		if (run & we & (rd==4'b1111)) 
+    	  r15 <= rd_din;
+		else 
+			r15 <= r15;
 	end
 
 
@@ -89,25 +137,41 @@ module registers(
 	begin
 
 		case (rs1)
-			3'b000: rs1_dout = 'd0;
-			3'b001: rs1_dout = r1;
-			3'b010: rs1_dout = r2;
-			3'b011: rs1_dout = r3;
-			3'b100: rs1_dout = r4;
-			3'b101: rs1_dout = r5;
-			3'b110: rs1_dout = r6;
-			3'b111: rs1_dout = r7;
+			4'b0000: rs1_dout = 'd0;
+			4'b0001: rs1_dout = r1;
+			4'b0010: rs1_dout = r2;
+			4'b0011: rs1_dout = r3;
+			4'b0100: rs1_dout = r4;
+			4'b0101: rs1_dout = r5;
+			4'b0110: rs1_dout = r6;
+			4'b0111: rs1_dout = r7;
+			4'b1000: rs1_dout = r8;
+			4'b1001: rs1_dout = r9;
+			4'b1010: rs1_dout = r10;
+			4'b1011: rs1_dout = r11;
+			4'b1100: rs1_dout = r12;
+			4'b1101: rs1_dout = r13;
+			4'b1110: rs1_dout = r14;
+			4'b1111: rs1_dout = r15;
 		endcase
 
 		case (rs2)
-			3'b000: rs2_dout = 'd0;
-			3'b001: rs2_dout = r1;
-			3'b010: rs2_dout = r2;
-			3'b011: rs2_dout = r3;
-			3'b100: rs2_dout = r4;
-			3'b101: rs2_dout = r5;
-			3'b110: rs2_dout = r6;
-			3'b111: rs2_dout = r7;
+			4'b0000: rs2_dout = 'd0;
+			4'b0001: rs2_dout = r1;
+			4'b0010: rs2_dout = r2;
+			4'b0011: rs2_dout = r3;
+			4'b0100: rs2_dout = r4;
+			4'b0101: rs2_dout = r5;
+			4'b0110: rs2_dout = r6;
+			4'b0111: rs2_dout = r7;
+			4'b1000: rs2_dout = r8;
+			4'b1001: rs2_dout = r9;
+			4'b1010: rs2_dout = r10;
+			4'b1011: rs2_dout = r11;
+			4'b1100: rs2_dout = r12;
+			4'b1101: rs2_dout = r13;
+			4'b1110: rs2_dout = r14;
+			4'b1111: rs2_dout = r15;
 		endcase
 
 	end
@@ -116,14 +180,22 @@ module registers(
 	always @ (*)
 	begin
 		case(debug_reg_sel)
-			3'b000: debug_reg_dout = 'd0;
-			3'b001: debug_reg_dout = r1;
-			3'b010: debug_reg_dout = r2;
-			3'b011: debug_reg_dout = r3;
-			3'b100: debug_reg_dout = r4;
-			3'b101: debug_reg_dout = r5;
-			3'b110: debug_reg_dout = r6;
-			3'b111: debug_reg_dout = r7;
+			4'b0000: debug_reg_dout = 'd0;
+			4'b0001: debug_reg_dout = r1;
+			4'b0010: debug_reg_dout = r2;
+			4'b0011: debug_reg_dout = r3;
+			4'b0100: debug_reg_dout = r4;
+			4'b0101: debug_reg_dout = r5;
+			4'b0110: debug_reg_dout = r6;
+			4'b0111: debug_reg_dout = r7;
+			4'b1000: debug_reg_dout = r8;
+			4'b1001: debug_reg_dout = r9;
+			4'b1010: debug_reg_dout = r10;
+			4'b1011: debug_reg_dout = r11;
+			4'b1100: debug_reg_dout = r12;
+			4'b1101: debug_reg_dout = r13;
+			4'b1110: debug_reg_dout = r14;
+			4'b1111: debug_reg_dout = r15;
 		endcase
 	end
 */
