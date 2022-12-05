@@ -3,9 +3,9 @@
 project:
   wokwi_id:    0        # If using wokwi, set this to your project's ID
   source_files:        # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. Source files must be in ./src
-    - browndeer_rv8u.v
-    - des.v
-    - registers.v
+    - verilog/rtl/browndeer_rv8u.v
+    - verilog/rtl/des.v
+    - verilog/rtl/registers.v
   top_module:  "browndeer_rv8u"      # put the name of your top module here, make it unique by prepending your github username
 
 # As everyone will have access to all designs, try to make it easy for someone new to your design to know what
