@@ -11,7 +11,8 @@ import csv
 import re
 import jinja2
 
-GPIO_VALID_RANGE = [8, 36]
+#GPIO_VALID_RANGE = [8, 36]
+GPIO_VALID_RANGE = [0, 38]
 
 def load_yaml(yaml_file):
     with open(yaml_file, "r") as stream:

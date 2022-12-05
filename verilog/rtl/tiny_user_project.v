@@ -40,12 +40,12 @@ module tiny_user_project(
 );
 
 // pass input and output pins defined in user_defines.v
-browndeer_rv8u mod (
-    io_in[16:8],
-    io_out[24:17]
+pyramiden_core mod (
+    io_in[19:0],
+    io_out[37:20]
 );
 // all output enabled
-assign io_oeb[24:17] = 8'b0;
+assign io_oeb[37:20] = 8'b0;
 
 endmodule	// tiny_user_project
 
