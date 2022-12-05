@@ -1,7 +1,7 @@
 magic
 tech gf180mcuC
 magscale 1 5
-timestamp 1670265343
+timestamp 1670269094
 << obsm1 >>
 rect 672 855 59304 66345
 << metal2 >>
@@ -1141,13 +1141,11 @@ rect 40624 1538 40784 66278
 rect 48304 1538 48464 66278
 rect 55984 1538 56144 66278
 << obsm4 >>
-rect 2142 1801 2194 54423
-rect 2414 1801 9874 54423
-rect 10094 1801 17554 54423
-rect 17774 1801 25234 54423
-rect 25454 1801 32914 54423
-rect 33134 1801 40594 54423
-rect 40814 1801 46074 54423
+rect 10990 4377 17554 46471
+rect 17774 4377 25234 46471
+rect 25454 4377 32914 46471
+rect 33134 4377 40594 46471
+rect 40814 4377 45374 46471
 << labels >>
 rlabel metal3 s 100 44352 400 44408 6 io_in[0]
 port 1 nsew signal input
@@ -2001,8 +1999,8 @@ port 418 nsew signal input
 string FIXED_BBOX 0 0 60000 68000
 string LEFclass BLOCK
 string LEFview TRUE
-string GDS_END 8068380
-string GDS_FILE /home/runner/work/gf180test/gf180test/openlane/tiny_user_project/runs/22_12_05_18_32/results/signoff/tiny_user_project.magic.gds
-string GDS_START 372234
+string GDS_END 8117966
+string GDS_FILE /home/runner/work/gf180test/gf180test/openlane/tiny_user_project/runs/22_12_05_19_35/results/signoff/tiny_user_project.magic.gds
+string GDS_START 374784
 << end >>
 
