@@ -285,7 +285,7 @@ module pyramiden_core(
    assign dmem_dout	= des_dout[36:21];
 
    assign des_din[13:0]		= imem_addr;
-	ssign des_din[15:14]		= 2'd0;
+	assign des_din[15:14]		= 2'd0;
    assign des_din[31:16]	= dmem_addr;
    assign des_din[47:32]	= dmem_din;
    assign des_din[63:48]	= 16'd0;
