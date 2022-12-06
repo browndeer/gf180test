@@ -39,25 +39,25 @@ Inputs:
 
 Outputs:
 
-- halt
-- dmem_we
-- dmem_en
-- serdes output bit 0
-- serdes output bit 1
-- serdes output bit 2
-- serdes output bit 3
-- serdes output bit 4
-- serdes output bit 5
-- serdes output bit 6
-- serdes output bit 7
-- serdes output bit 8
-- serdes output bit 9
-- serdes output bit 10
-- serdes output bit 11
-- serdes output bit 12
-- serdes output bit 13
-- serdes output bit 14
-- serdes output bit 15
+    - halt
+    - dmem_we
+    - dmem_en
+    - serdes output bit 0
+    - serdes output bit 1
+    - serdes output bit 2
+    - serdes output bit 3
+    - serdes output bit 4
+    - serdes output bit 5
+    - serdes output bit 6
+    - serdes output bit 7
+    - serdes output bit 8
+    - serdes output bit 9
+    - serdes output bit 10
+    - serdes output bit 11
+    - serdes output bit 12
+    - serdes output bit 13
+    - serdes output bit 14
+    - serdes output bit 15
 
 
 # Tiny User Project
