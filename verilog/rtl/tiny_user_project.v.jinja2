@@ -41,11 +41,11 @@ module tiny_user_project(
 
 // pass input and output pins defined in user_defines.v
 {{ module_name }} mod (
-    io_in[{{ io_in_range[1] - 1 }}:{{ io_in_range[0] }}],
-    io_out[{{ io_out_range[1] - 1 }}:{{ io_out_range[0] }}]
+    io_in[18:0],
+    io_out[18:0]
 );
 // all output enabled
-assign io_oeb[{{ io_out_range[1] - 1 }}:{{ io_out_range[0] }}] = 'd0;
+assign io_oeb[18:0] = 19'd0;
 
 endmodule	// tiny_user_project
 
