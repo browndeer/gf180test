@@ -45,7 +45,7 @@ pyramiden_core mod (
     io_out[37:19]
 );
 // all output enabled
-assign io_oeb[37:19] = 8'b0;
+assign io_oeb[37:19] = 'd0;
 
 endmodule	// tiny_user_project
 
