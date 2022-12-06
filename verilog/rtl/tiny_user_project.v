@@ -41,11 +41,11 @@ module tiny_user_project(
 
 // pass input and output pins defined in user_defines.v
 pyramiden_core mod (
-    io_in[19:0],
-    io_out[37:20]
+    io_in[18:0],
+    io_out[37:19]
 );
 // all output enabled
-assign io_oeb[37:20] = 8'b0;
+assign io_oeb[37:19] = 8'b0;
 
 endmodule	// tiny_user_project
 
